@@ -1,7 +1,7 @@
 <?php
  include "koneksi.php";
  $id = $_GET['id'];
- $sql = "SELECT * FROM data WHERE id='$id'";
+ $sql = "SELECT * FROM data WHERE Nomor='$id'";
  $result = mysql_query($sql);
  $row=mysql_fetch_array($result);
 ?>

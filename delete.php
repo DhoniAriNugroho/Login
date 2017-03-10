@@ -1,16 +1,24 @@
 <?php
-// buka koneksi dengan MySQL
-  include("koneksi.php");
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "login";
 
-  if (isset($_GET["id"])) {
-    $id = $_GET["id"];
-    $query = "DELETE FROM data WHERE Nomor='$id' ";
-    $hasil_query = mysql_query($link, $query);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
-    if(!$hasil_query) {
-      die ("Gagal menghapus data: ".mysql_errno($link).
-           " - ".mysql_error($link));
-    }
-  }
-  header("location:home.php");
+// sql to delete a record
+$sql = "DELETE FROM data WHERE Nomor='Nomor'";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . $conn->error;
+}
+
+$conn->close();
 ?>
